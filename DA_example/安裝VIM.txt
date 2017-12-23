@@ -1,0 +1,7 @@
+
+
+
+opkg update
+opkg install vim
+mv /bin/vi /bin/vi_old
+ln -s /usr/bin/vim /bin/vi

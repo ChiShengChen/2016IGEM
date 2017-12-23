@@ -1,0 +1,21 @@
+<component name="libraryTable">
+  <library name="debug">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/MyApplication/app/build/intermediates/pre-dexed/debug/debug_1154c7253e614a6ef3a372cf29724833a79c467a.jar!/" />
+      <root url="jar://$PROJECT_DIR$/MyApplication/app/build/intermediates/pre-dexed/debug/classes_435cb8d54429919f696b671715b69da16501b344.jar!/" />
+      <root url="jar://$PROJECT_DIR$/MyApplication/app/build/intermediates/pre-dexed/debug/constraint-layout-solver-1.0.2_95e4987bd0e38a25be8d00a76475c48a4f26c085.jar!/" />
+      <root url="jar://$PROJECT_DIR$/MyApplication/app/build/intermediates/pre-dexed/debug/classes_825437d36e0150a8333bc5557f79ff2a2b47ef86.jar!/" />
+      <root url="jar://$PROJECT_DIR$/MyApplication/app/build/intermediates/pre-dexed/debug/classes_88cf1052e30f478a0fb374a37db5593b12857fc1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/MyApplication/app/build/intermediates/pre-dexed/debug/classes_03547cd63222cba5b8ebb21a939803b3752e2332.jar!/" />
+      <root url="jar://$PROJECT_DIR$/MyApplication/app/build/intermediates/pre-dexed/debug/classes_d13811b5d8ccbde7f581f68610efdeaca7292768.jar!/" />
+      <root url="jar://$PROJECT_DIR$/MyApplication/app/build/intermediates/pre-dexed/debug/support-annotations-25.3.1_dd1a4b5753aa7d2c02b621a00f98f3b1c0e98794.jar!/" />
+      <root url="jar://$PROJECT_DIR$/MyApplication/app/build/intermediates/pre-dexed/debug/classes_74eeaffea7c53b7a928f1f7dce4cb2da376a69f7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/MyApplication/app/build/intermediates/pre-dexed/debug/classes_c6d6e8f06c1a5d05e4d5c8969937dbc4f31db7c5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/MyApplication/app/build/intermediates/pre-dexed/debug/classes_2b50415b5e182699cef2333ac42cdd9897a7bb53.jar!/" />
+      <root url="jar://$PROJECT_DIR$/MyApplication/app/build/intermediates/pre-dexed/debug/classes_ce0862dd8eae08ed74021bf184575f30344619e2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/MyApplication/app/build/intermediates/pre-dexed/debug/classes_0143f02ad15b0adba0cf09d9eaa5e1902af34b75.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

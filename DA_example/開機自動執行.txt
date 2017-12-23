@@ -1,0 +1,12 @@
+vim /etc/rc.local
+
+加入一行
+
+(sleep 0;python -u /root/DAI.py > /root/log.txt)&
+
+想要看效果，最後要斷電重開
+
+
+要看列印的訊息
+
+cat /root/log.txt

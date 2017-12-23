@@ -1,0 +1,9 @@
+Bridge服務要手動開啟，不然Arduino端一呼叫Bridge.begin()就會卡住。
+
+指令如下：
+uci set yunbridge.config.disabled='0'
+uci commit
+reboot
+
+
+

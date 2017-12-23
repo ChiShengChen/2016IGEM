@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta content="text/html; charset=windows-1252" http-equiv=Content-Type>
+    
+    <title>Weather</title>
+    
+    <meta name="keywords" content="Home Weather" />
+    <meta name="description" content="Weather State" />
+    
+    <link rel="stylesheet" type="text/css" href="../css/weather.css" />
+    
+    <!-- libraries -->
+    <script type="text/javascript" language="javascript" src="../javascript/jquery.min.js"></script> <!-- jQuery -->
+    
+    <script type="text/javascript" language="javascript" src="../javascript/rgraph/RGraph.common.core.min.js" ></script> <!-- core library for cauges, etc. --> 
+    <script type="text/javascript" language="javascript" src="../javascript/rgraph/RGraph.common.effects.min.js"></script> <!-- graphical effects -->
+    <script type="text/javascript" language="javascript" src="../javascript/rgraph/RGraph.gauge.min.js"></script> <!-- gauges -->
+    <script type="text/javascript" language="javascript" src="../javascript/rgraph/RGraph.thermometer.min.js"></script> <!-- thermometers -->
+    <script type="text/javascript" language="javascript" src="../javascript/rgraph/RGraph.vprogress.min.js"></script> <!-- rain meter -->
+    <script type="text/javascript" language="javascript" src="../javascript/rgraph/RGraph.bar.min.js"></script> <!-- bar graph -->
+    
+    <script type="text/javascript" language="javascript" src="../javascript/steelseries/steelseries-min.js" ></script> <!-- steelseries -->
+    <script type="text/javascript" language="javascript" src="../javascript/steelseries/tween-min.js" ></script> <!-- tween -->
+    
+    <script type="text/javascript" language="javascript" src="../javascript/zoom/iZoom.js"></script> <!-- zoom lens -->
+    
+    <script type="text/javascript" language="javascript" src="../javascript/chart/dygraph-combined.js"></script>  <!-- charts -->
+    
+    <script type="text/javascript" language="javascript" src="../javascript/qr/jquery.qrcode.min.js"></script> <!-- qr code -->
+    
+    <!-- private functions -->
+    <script type="text/javascript" language="javascript" src="../javascript/main.js"></script> <!-- main function calls -->
+    <script type="text/javascript" language="javascript" src="../javascript/tabs.js"></script> <!-- tabs -->
+    <script type="text/javascript" language="javascript" src="../javascript/draw_instruments.js"></script> <!-- draw gauges, save & restore settings -->
+    <script type="text/javascript" language="javascript" src="../javascript/draw_forecast.js"></script> <!-- make & draw forecast -->
+    <script type="text/javascript" language="javascript" src="../javascript/draw_history.js"></script> <!-- draw history charts -->    
+    <script type="text/javascript" language="javascript" src="../javascript/zoom.js"></script> <!-- zoom -->
+  </head>
+
+  <body>  
+  
+    <h1>Weather Console<p style="display:inline; color:#360; font-size:9px;"> v5.5.6</p></h1>
+    <br/>
+    
+    <article class="tabs">
+      
+      <section id="outside" class="current"> <!-- outside weather -->
+        <h3>Outdoor</h3>
+        <div class="tab">
+          <table border="0" width="97%" height="94%" valign="middle" cellspacing="0">
+            <tr>
+              <td><canvas id="temperature_exterior" width="67" height="280"></canvas></td>
+              <td><canvas id="heatindex_exterior" width="67" height="280"></canvas></td>
+              <td><canvas id="pressure" width="220" height="220"></canvas></td>
+              <td><canvas id="humidity_exterior" width="220" height="220"></canvas></td>
+            </tr>
+            <tr>
+              <td colspan="4" height="7%"><b>Humidex:</b> <a id="humidex">0</a> &nbsp; <b>Dewpoint:</b> <a id="dewpoint">0 &degC</a> &nbsp; <b>Windchill:</b> <a id="windchill">0 &degC</a></td>
+            </tr>
+          </table>
+        </div>
+      </section>
+      
+      <section id="wind_rain"> <!-- wind & rain -->
+        <h3>Wind & Rain</h3>
+        <div class="tab">
+          <table border="0" width="97%" height="94%" valign="middle" cellspacing="0">
+            <tr>
+              <td width="60%"><canvas id="windvane" width="330" height="330"></canvas><br/><a id="beaufort">0</a><img src="../images/windsock.png" alt="windsock" height="70" width="70" /></td>
+              <td><canvas id="rainmeter" width="150" height="320"></canvas></td>
+            </tr>
+          </table>
+        </div>
+      </section>
+      
+      <section id="forecast"> <!-- forecast -->
+        <h3>Forecast</h3>
+        <div class="tab">
+          <table border="0" width="96%" height="95%" align="middle" valign="middle" cellspacing="0">
+            <tr><td>
+              <h2>12 hour weather forecast</h2>
+              <img id="forecast_img" src="" width="256" height="256" valign="middle" border="0">
+              <br/>
+              <a id="forecast_data">0</a>
+            </td></tr>
+          </table>
+        </div>
+      </section>
+      
+      <section id="history"> <!-- history -->
+        <h3>History</h3>
+        <div class="tab">            
+          
+          <div class="chart" id="history_chart" style="width:600px; height:310px; background:#FFFFFF; text-align:left; margin-top: 10px; margin-right: 10px;"></div>
+          
+          <b>Min: </b><a id="min">0</a> &nbsp; <b> Max: </b><a id="max">0</a> 
+          
+          <select id="which_chart">
+            <option value="0">Temperature</option>
+            <option value="1">Pressure</option>
+            <option value="2">Relative Humidity</option>
+            <option value="3">Dew Point</option>
+            <option value="4">Humidity Index</option>
+            <option value="5">Wind Speed</option>
+            <option value="6">Wind Direction</option>
+            <option value="7">Precipitation</option>
+            <option value="8">Light</option>
+            <option value="9">Comparison Chart</option>
+          </select>
+          
+          <select id="compare_chart_one" style="display:none;">
+            <option value="0" selected="selected">Temperature</option>
+            <option value="1">Pressure</option>
+            <option value="2">Relative Humidity</option>
+            <option value="3">Dew Point</option>
+            <option value="4">Humidity Index</option>
+            <option value="5">Wind Speed</option>
+            <option value="6">Wind Direction</option>
+            <option value="7">Precipitation</option>
+            <option value="8">Light</option>
+          </select>
+          
+          <select id="compare_chart_two" style="display:none;">
+            <option value="0">Temperature</option>
+            <option value="1" selected="selected">Pressure</option>
+            <option value="2">Relative Humidity</option>
+            <option value="3">Dew Point</option>
+            <option value="4">Humidity Index</option>
+            <option value="5">Wind Speed</option>
+            <option value="6">Wind Direction</option>
+            <option value="7">Precipitation</option>
+            <option value="8">Light</option>
+          </select>
+          
+          <select id="which_interval_chart" style="display:;">
+            <option value="0">1 hour</option>
+            <option value="1">2 hours</option>
+            <option value="2">3 hours</option>
+            <option value="3">12 hours</option>
+            <option value="4">1 day</option>
+            <option value="5">1 week</option>
+            <option value="6">1 month</option>
+            <option value="7">3 month</option>
+            <option value="8">6 month</option>
+            <option value="9">1 year</option>
+          </select>
+          
+          <button id="download_button" style="display:;">Download</button>
+        </div>
+      </section>
+      
+      <section id="options"> <!-- options -->
+        <h3>Options</h3>
+        <div class="tab">
+          <table border="0" width="97%" height="94%" align="middle" valign="middle" cellspacing="0">
+            <tr><td colspan="2">
+              Last time data was fetched: <a id="lasttime">0</a>
+            </td></tr>
+            
+            <tr height="10%">
+              <td align="right">
+                <label for="poll_data">Data polling interval</label>
+              </td>
+              
+              <td align="left">
+                <div id="data_polling_interval_choices">
+                  <select id="poll_data"  style="width: 90px">
+                    <option id="poll_data_1800000"  value="1800">30 minutes</option>
+                    <option id="poll_data_3600000"  value="3600">1 hour</option>
+                    <option id="poll_data_7200000"  value="7200">2 hours</option>
+                    <option id="poll_data_10800000" value="10800">3 hours</option>
+                    <option id="poll_data_21600000" value="21600">6 hours</option>
+                  </select>
+              </div>
+              </td>
+            </tr>
+            
+            <tr><td colspan="2">            
+              <div><button id="save_settings">Save</button><label id="status"></label></div>
+            </td></tr>
+            
+          </table>          
+        </div>
+      </section>
+      
+      <section id="about"> <!-- about -->
+        <h3>About</h3>
+        <div class="tab">
+          <table border="0" width="95%" height="93%" align="middle" valign="middle" cellspacing="5" cellpadding="5">
+            <tr>
+              <td>
+                <table width="280" height="280" valin="center" border="1" cellspacing="0">
+                  <tr><td>
+                    <img id="gmaps" src="../images/location.png" width="290" height="290" valign="middle" border="1">
+                  </tr></td>
+                </table>
+              </td>
+              
+              <td align="left">
+                
+                  This is a small extension showing weather conditions in Brasov, Romania (see map). The weather station consists of:
+                  <ul style="padding-left: 14px;">  
+                    <li type="square">Arduino Ethernet board</li>
+                    <li type="square">HIH-4030 Breakout</li>
+                    <li type="square">Sparkfun Weather Meters</li>
+                    <li type="square">Atmospheric pressure sensor MPL115A1</li>
+                    <li type="square">Real Time Clock</li>
+                  </ul>
+                                
+                For details download <a id="code_download_link" href="http://leonardpitzu.krogan.ro/WeatherStation.zip"><i><font color="blue">this archive</font></i></a> which contains schematics, code and guide to build the weather station. To view the live feed on your phone just scan the QRCode&trade; below using Your phone's camera.
+                
+                <center><div id="qr_url"></div></center>
+                
+                <center>
+                  <a id="mail_link" href="mailto:leonard.pitzu@gmail.com"><i>leonard.pitzu@gmail.com</i></a>
+                  <br/>
+                  <b>WikiLeo&trade;</b>
+                </center>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </section>
+      
+    </article>
+  </body>
+
+</html>

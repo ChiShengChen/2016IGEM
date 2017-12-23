@@ -1,0 +1,34 @@
+{
+  "manifest_version": 2,
+  "content_security_policy": "xhr-src http://api.pachube.com/* http://leonardpitzu.dyndns.org:*; script-src 'self'; object-src 'self'; img-src data: 'self' http://leonardpitzu.dyndns.org:* http://www.google-analytics.com;",
+  "name": "Weather",
+  "version": "5.5.6",
+  "description": "shows current weather in Brasov",
+  "homepage_url": "http://leonardpitzu.krogan.ro",
+  "update_url": "http://leonardpitzu.krogan.ro/updates.xml",
+  "icons": {
+    "128": "images/128.png",
+    "256": "images/256.png",
+    "64": "images/64.png",
+    "48": "images/48.png",
+    "19": "images/19.png",
+    "16": "images/16.png" 
+  }, 
+  "background": {
+    "page": "html/background.html"
+  },
+  "browser_action": {
+    "default_title": "Weather",
+    "default_icon": "images/19.png",
+    "default_popup": "html/weather.html"
+  },
+  "permissions": [
+    "tabs",
+    "unlimitedStorage",
+    "http://leonardpitzu.dyndns.org/*",
+    "https://api.pachube.com/",
+    "http://api.pachube.com/"
+  ],
+  "offline_enabled": true
+}
+

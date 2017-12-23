@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    tools:context="com.car.meow.car.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="IP"
+            android:textSize="24sp"
+            android:layout_alignBaseline="@+id/user_addr"
+            android:layout_alignBottom="@+id/user_addr"
+            android:layout_toLeftOf="@+id/user_addr"
+            android:layout_toStartOf="@+id/user_addr" />
+
+        <EditText
+            android:id="@+id/user_addr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="192.168.1.78"
+            android:layout_above="@+id/imageView"
+            android:layout_toLeftOf="@+id/connect"
+            android:layout_toStartOf="@+id/connect" />
+
+        <EditText
+            android:id="@+id/user_port"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView2"
+            android:layout_toEndOf="@+id/rightturn"
+            android:layout_toRightOf="@+id/rightturn"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="8888"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/connect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="connect" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/forward"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/connect"
+            android:layout_toEndOf="@+id/user_port" />
+
+        <Button
+            android:id="@+id/forward"
+            android:layout_width="@android:dimen/app_icon_size"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/backward"
+            android:layout_marginEnd="91dp"
+            android:layout_marginRight="91dp"
+            android:layout_toLeftOf="@+id/connect"
+            android:layout_toStartOf="@+id/connect"
+            android:onClick=""
+            android:text="↑" />
+
+        <Button
+            android:id="@+id/backward"
+            android:layout_width="@android:dimen/app_icon_size"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/leftturn"
+            android:layout_toRightOf="@+id/leftturn"
+            android:text="↓" />
+
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/user_addr"
+            android:layout_alignBottom="@+id/user_addr"
+            android:layout_alignEnd="@+id/user_addr"
+            android:layout_alignRight="@+id/user_addr"
+            android:layout_marginEnd="23dp"
+            android:layout_marginRight="23dp"
+            android:text="TextView" />
+
+        <Button
+            android:id="@+id/rightturn"
+            android:layout_width="@android:dimen/app_icon_size"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/backward"
+            android:layout_toRightOf="@+id/backward"
+            android:text="→" />
+
+        <Button
+            android:id="@+id/leftturn"
+            android:layout_width="@android:dimen/app_icon_size"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/forward"
+            android:layout_toStartOf="@+id/forward"
+            android:text="←" />
+
+        <Button
+            android:id="@+id/sprint"
+            android:layout_width="@android:dimen/app_icon_size"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageView"
+            android:layout_marginLeft="27dp"
+            android:layout_marginStart="27dp"
+            android:layout_toEndOf="@+id/rightturn"
+            android:layout_toRightOf="@+id/rightturn"
+            android:text="▲" />
+
+        <Button
+            android:id="@+id/antisprint"
+            android:layout_width="@android:dimen/app_icon_size"
+            android:layout_height="wrap_content"
+            android:text="▼"
+            android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/sprint"
+            android:layout_alignStart="@+id/sprint" />
+    </RelativeLayout>
+</LinearLayout>
+

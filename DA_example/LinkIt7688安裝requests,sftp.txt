@@ -1,0 +1,13 @@
+
+安裝request
+opkg update 
+opkg install wget ca-certificates
+wget https://bootstrap.pypa.io/get-pip.py
+python get-pip.py
+pip install requests
+
+
+安裝SFTP
+opkg update 
+opkg install openssh-sftp-server
+opkg install python-openssl
